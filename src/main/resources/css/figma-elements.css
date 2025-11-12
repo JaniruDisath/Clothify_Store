@@ -1,0 +1,59 @@
+.text-field-loyalty-customer {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 17;
+
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 17;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.border-thin-rectangular-round-corner{
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 50px;
+}
+
+
+.button-loyalty-customer {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 17;
+
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 17;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.button-loyalty-customer:hover {
+    -fx-background-color: #e0e0e0;
+}
+.button-loyalty-customer:pressed {
+    -fx-background-color: #cccccc;
+}
+
+.button-loyalty-customer-Black {
+    -fx-background-color: black;
+    -fx-background-insets: 0;
+    -fx-background-radius: 17;
+
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 17;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.button-loyalty-customer-Black:hover {
+    -fx-background-color: #404040;
+}
+.button-loyalty-customer-Black:pressed {
+    -fx-background-color: #292929;
+}

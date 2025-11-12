@@ -10,8 +10,11 @@ public class Starter extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/pages/cashier/POS.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/pages/cashier/CashierMain.fxml"))));
         stage.setResizable(false);
+        stage.setFullScreen(true);
         stage.show();
     }
+
+    //Todo - Make the application not usable when exit full screen and ask to go full screen
 }
