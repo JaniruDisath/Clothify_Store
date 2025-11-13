@@ -1,9 +1,9 @@
-package repository.customerTable;
+package repository.loyaltyCustomerTable;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import model.dto.CustomerEntity;
+import model.entity.LoyaltyCustomerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,20 +12,20 @@ import repository.ClothifyDatabase;
 
 import java.util.List;
 
-public class CustomerTable implements ClothifyDatabase<CustomerEntity> {
+public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEntity> {
 
-    private static final Configuration configuration = new Configuration().addAnnotatedClass(model.dto.CustomerEntity.class).configure("hibernate.cfg.xml");
+    private static final Configuration configuration = new Configuration().addAnnotatedClass(LoyaltyCustomerEntity.class).configure("hibernate.cfg.xml");
     private static SessionFactory sessionFactory = configuration.buildSessionFactory();
 
     @Override
-    public List<CustomerEntity> getAllData() {
+    public List<LoyaltyCustomerEntity> getAllData() {
         Session session = sessionFactory.openSession();
-        List<CustomerEntity> list = null;
+        List<LoyaltyCustomerEntity> list = null;
 
         try {
             CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<CustomerEntity> query = builder.createQuery(CustomerEntity.class);
-            Root<CustomerEntity> root = query.from(CustomerEntity.class);
+            CriteriaQuery<LoyaltyCustomerEntity> query = builder.createQuery(LoyaltyCustomerEntity.class);
+            Root<LoyaltyCustomerEntity> root = query.from(LoyaltyCustomerEntity.class);
             query.select(root);
 
             list = session.createQuery(query).getResultList();
@@ -36,7 +36,7 @@ public class CustomerTable implements ClothifyDatabase<CustomerEntity> {
     }
 
     @Override
-    public void insertAnItem(CustomerEntity customerEntity) {
+    public void insertAnItem(LoyaltyCustomerEntity customerEntity) {
 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -55,22 +55,22 @@ public class CustomerTable implements ClothifyDatabase<CustomerEntity> {
     }
 
     @Override
-    public CustomerEntity getAnItem(String primaryID) {
+    public LoyaltyCustomerEntity getAnItem(String primaryID) {
 
         Session session = sessionFactory.openSession();
 
-        return session.find(CustomerEntity.class, primaryID);
+        return session.find(LoyaltyCustomerEntity.class, primaryID);
     }
 
     @Override
-    public void updateAnItem(CustomerEntity customerEntity) {
+    public void updateAnItem(LoyaltyCustomerEntity customerEntity) {
 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            CustomerEntity customerEntityTemp = session.find(CustomerEntity.class, customerEntity.getId());
+            LoyaltyCustomerEntity customerEntityTemp = session.find(LoyaltyCustomerEntity.class, customerEntity.getId());
             customerEntityTemp.setEmail("newemail@example.com");
             session.merge(customerEntityTemp);
             tx.commit();

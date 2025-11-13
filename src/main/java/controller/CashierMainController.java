@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,11 @@ import java.util.ResourceBundle;
 
 public class CashierMainController implements Initializable {
 
+    // --- Singleton instance ---
+    @Getter
+    private static CashierMainController instance;
+
+    // --- FXML Fields ---
     @FXML
     private StackPane contentArea;
 
@@ -26,9 +32,10 @@ public class CashierMainController implements Initializable {
     @FXML
     private HBox orderElement;
 
+    // --- FXML Event Handlers ---
     @FXML
     void onPOSElementClicked(MouseEvent event) {
-        loadUI("/view/pages/cashier/pos/POS.fxml");
+        loadUI("/view/pages/cashier/pos/LoyaltyCustomer.fxml");
     }
 
     @FXML
@@ -41,8 +48,8 @@ public class CashierMainController implements Initializable {
         loadUI("/view/pages/cashier/Inventory.fxml");
     }
 
-
-    private void loadUI(String fxml) {
+    // --- Load new content into contentArea ---
+    public void loadUI(String fxml) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
             contentArea.getChildren().setAll(root);
@@ -51,10 +58,10 @@ public class CashierMainController implements Initializable {
         }
     }
 
+    // --- Initialize and set singleton instance ---
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadUI("/view/pages/cashier/pos/POS.fxml");
-
+        instance = this; // store reference when controller is created
+        loadUI("/view/pages/cashier/pos/LoyaltyCustomer.fxml");
     }
-
 }

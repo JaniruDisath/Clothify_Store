@@ -1,5 +1,7 @@
 package controller.POSController.Elements;
 
+import controller.CashierMainController;
+import controller.CashierMainControllerInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -11,12 +13,17 @@ public class LoyaltyCustomerController {
 
     @FXML
     void onEnter(MouseEvent event) {
-
+        //Go to services
+        //Check for availability
+        //If not present show a dialog box that it's not available.
+        //And ask to enter again
+        //If present load the POS
     }
 
     @FXML
-    void onNotLoyaltyMemberClicke(MouseEvent event) {
-
+    void onNotLoyaltyMemberClick(MouseEvent event) {
+        //Open Add Loyalty Customer
+        CashierMainController.getInstance().loadUI("/view/pages/cashier/pos/AddLoyaltyCustomer.fxml");
     }
 
 }
