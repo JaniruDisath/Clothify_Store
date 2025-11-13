@@ -1,5 +1,8 @@
 package repository.customerTable;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import model.dto.CustomerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,17 +14,31 @@ import java.util.List;
 
 public class CustomerTable implements ClothifyDatabase<CustomerEntity> {
 
+    private static final Configuration configuration = new Configuration().addAnnotatedClass(model.dto.CustomerEntity.class).configure("hibernate.cfg.xml");
+    private static SessionFactory sessionFactory = configuration.buildSessionFactory();
 
     @Override
     public List<CustomerEntity> getAllData() {
-        return List.of();
+        Session session = sessionFactory.openSession();
+        List<CustomerEntity> list = null;
+
+        try {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<CustomerEntity> query = builder.createQuery(CustomerEntity.class);
+            Root<CustomerEntity> root = query.from(CustomerEntity.class);
+            query.select(root);
+
+            list = session.createQuery(query).getResultList();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     @Override
     public void insertAnItem(CustomerEntity customerEntity) {
 
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
@@ -35,21 +52,53 @@ public class CustomerTable implements ClothifyDatabase<CustomerEntity> {
         } finally {
             session.close();
         }
-
     }
 
     @Override
     public CustomerEntity getAnItem(String primaryID) {
-        return null;
+
+        Session session = sessionFactory.openSession();
+
+        return session.find(CustomerEntity.class, primaryID);
     }
 
     @Override
     public void updateAnItem(CustomerEntity customerEntity) {
 
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            CustomerEntity customerEntityTemp = session.find(CustomerEntity.class, customerEntity.getId());
+            customerEntityTemp.setEmail("newemail@example.com");
+            session.merge(customerEntityTemp);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
     }
 
     @Override
     public void deleteAnItem(String primaryID) {
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.remove(getAnItem(primaryID));
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
 
     }
 }
