@@ -1,0 +1,52 @@
+.border-cart-boarder-corner{
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 25px;
+}
+
+.add-remove-button{
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 12px;
+}
+
+.add-remove-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.add-remove-button:pressed {
+    -fx-background-color: #cccccc;
+}
+
+.border-search-bar-background {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 25px;
+
+    -fx-background-insets: 0;
+    -fx-background-radius: 25px;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.border-search-bar{
+    -fx-border-color: black;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 25px;
+
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 25px;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.border-search-bar:hover {
+    -fx-background-color: #e0e0e0;
+}
+.border-search-bar:pressed {
+    -fx-background-color: #cccccc;
+}
+
