@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.controller.POSController.Elements.paymentGate.CashGate">
+   <children>
+      <Pane prefHeight="851.0" prefWidth="218.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/pos-css.css" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </HBox.margin>
+         <children>
+            <VBox prefHeight="520.0" prefWidth="950.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="951.0">
+                     <children>
+                        <ImageView fitHeight="58.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../../../../../images/icons/pos-page-iconpack/dollar_icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="80.0" prefWidth="325.0" text="Cash Payment" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Pane prefHeight="70.0" prefWidth="228.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#onCardCliked" prefHeight="35.0" prefWidth="270.0" styleClass="button-checkout-white" stylesheets="@../../../../../css/figma-elements.css" text="Card">
+                           <HBox.margin>
+                              <Insets left="20.0" right="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Line endX="600.0" endY="-33.0" startX="-350.0" startY="-33.0" />
+                  <HBox prefHeight="355.0" prefWidth="951.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fillWidth="false" prefHeight="361.0" prefWidth="444.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="86.0" prefWidth="417.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Amount Given By Customer">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <TextField fx:id="tf_AmountCustomerGave" prefHeight="46.0" prefWidth="416.0" promptText="Enter Amount" styleClass="text-field-loyalty-customer" stylesheets="@../../../../../css/figma-elements.css">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Pane prefHeight="200.0" prefWidth="444.0" />
+                              <Line endX="45.5" endY="-33.0" startX="-350.0" startY="-33.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <HBox prefHeight="24.0" prefWidth="500.0">
+                                 <children>
+                                    <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Total">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                    <Text fx:id="totalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Line endX="600.0" endY="-33.0" startX="600.0" startY="326.29290771484375" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label prefHeight="33.0" prefWidth="325.0" text="Change to Return">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Line endX="156.5" endY="-33.0" startX="-350.0" startY="-33.0" />
+                              <HBox alignment="CENTER" prefHeight="77.0" prefWidth="508.0">
+                                 <children>
+                                    <Label fx:id="returnChangeLabel" text="\$ 8888.00" textFill="BLUE">
+                                       <font>
+                                          <Font size="48.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Line endX="156.5" endY="-33.0" startX="-350.0" startY="-33.0" />
+                              <VBox prefHeight="230.0" prefWidth="508.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 5000">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfFiveThousandLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 1000">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfThousandLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 500">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfFiveHundradLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 100">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfHundradsLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 50">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfFiftiesLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 20">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfTwentiesLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 10">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfTensLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 5">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfFivesLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 2">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfTwosLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                          <Pane prefHeight="115.0" prefWidth="92.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../../css/figma-elements.css">
+                                             <children>
+                                                <VBox alignment="CENTER" layoutY="3.0" prefHeight="98.0" prefWidth="84.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="\$ 1">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Line endX="-260.25" endY="-33.0" startX="-350.0" startY="-33.0" />
+                                                      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label fx:id="numberOfOnesLabel" text="x0">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Pane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Line endX="600.0" endY="-33.0" startX="-350.0" startY="-33.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="951.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="270.0" styleClass="button-checkout-white" stylesheets="@../../../../../css/figma-elements.css" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#onCompleteCheckout" prefHeight="35.0" prefWidth="250.0" styleClass="button-proceed-payment-Black" stylesheets="@../../../../../css/figma-elements.css" text="Complete Checkout" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</HBox>

@@ -1,4 +1,4 @@
-package model.entity;
+package student.model.entity;
 
 
 import jakarta.persistence.*;

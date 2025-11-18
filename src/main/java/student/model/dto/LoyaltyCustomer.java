@@ -1,4 +1,4 @@
-package model.dto;
+package student.model.dto;
 
 import lombok.*;
 

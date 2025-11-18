@@ -1,4 +1,4 @@
-package controller.inventory;
+package student.controller.inventory;
 
 public class InventoryController {
 }

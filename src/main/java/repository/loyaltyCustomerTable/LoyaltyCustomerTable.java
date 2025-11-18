@@ -3,7 +3,7 @@ package repository.loyaltyCustomerTable;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import model.entity.LoyaltyCustomerEntity;
+import student.model.entity.LoyaltyCustomerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

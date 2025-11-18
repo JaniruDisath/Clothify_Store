@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="950.0" maxWidth="1800.0" minHeight="950.0" minWidth="1800.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="950.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CashierMainController">
+<BorderPane maxHeight="950.0" maxWidth="1800.0" minHeight="950.0" minWidth="1800.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="950.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.controller.CashierMainController">
     <left>
         <VBox prefHeight="882.0" prefWidth="215.0" stylesheets="@../../../css/style.css" BorderPane.alignment="CENTER">
             <children>

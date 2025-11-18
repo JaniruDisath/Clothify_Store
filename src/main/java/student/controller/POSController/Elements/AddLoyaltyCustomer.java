@@ -1,6 +1,6 @@
-package controller.POSController.Elements;
+package student.controller.POSController.Elements;
 
-import controller.CashierMainController;
+import student.controller.CashierMainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

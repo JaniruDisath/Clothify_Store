@@ -1,7 +1,6 @@
-package controller.POSController.Elements;
+package student.controller.POSController.Elements;
 
-import controller.CashierMainController;
-import controller.CashierMainControllerInterface;
+import student.controller.CashierMainController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;

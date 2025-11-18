@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.POSController.PosController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.controller.POSController.PosController">
     <children>
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <children>
@@ -22,7 +22,7 @@
                   <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
                </VBox.margin>
                <children>
-                  <SearchableComboBox editable="true" layoutX="20.0" layoutY="9.0" prefHeight="29.0" prefWidth="888.0" styleClass="rounded-search-combo" stylesheets="@../../../../css/pos-css.css" />
+                  <SearchableComboBox fx:id="searchableComboBox" editable="true" layoutX="22.0" layoutY="13.0" prefHeight="29.0" prefWidth="888.0" styleClass="rounded-search-combo" stylesheets="@../../../../css/pos-css.css" />
                </children>
             </Pane>
             <Pane prefHeight="191.0" prefWidth="950.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css">
@@ -34,7 +34,7 @@
                      <children>
                         <VBox fillWidth="false" prefHeight="169.0" prefWidth="118.0">
                            <children>
-                              <Pane prefHeight="112.0" prefWidth="112.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css">
+                              <Pane fx:id="itemIcon" prefHeight="112.0" prefWidth="112.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css">
                                  <children>
                                     <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="32.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
@@ -47,7 +47,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Label prefHeight="22.0" prefWidth="111.0" text="         Brand Name" textAlignment="CENTER" wrapText="true">
+                                    <Label fx:id="brandNameLabel" prefHeight="22.0" prefWidth="111.0" text="         Brand Name" textAlignment="CENTER" wrapText="true">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -61,7 +61,7 @@
                         </VBox>
                         <VBox prefHeight="162.0" prefWidth="188.0">
                            <children>
-                              <Label text="Item Name Long">
+                              <Label fx:id="itemNameLabel" text="Item Name Long">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -69,7 +69,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Code : DRS-004-M-LR">
+                              <Label fx:id="codeLabel" text="Code : DRS-004-M-LR">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -77,7 +77,7 @@
                                     <Insets top="5.0" />
                                  </padding>
                               </Label>
-                              <Label text="Size : M">
+                              <Label fx:id="sizeLabel" text="Size : M">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -85,7 +85,7 @@
                                     <Insets top="5.0" />
                                  </padding>
                               </Label>
-                              <Label text="Colour : Blue">
+                              <Label fx:id="colorLabel" text="Colour : Blue">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -107,7 +107,7 @@
                            <children>
                               <HBox prefHeight="130.0" prefWidth="577.0">
                                  <children>
-                                    <Label text="\$ 8888.00" textFill="BLUE">
+                                    <Label fx:id="priceLabel" text="\$ 8888.00" textFill="BLUE">
                                        <font>
                                           <Font size="48.0" />
                                        </font>
@@ -135,7 +135,7 @@
                                                 <Insets bottom="5.0" left="20.0" top="5.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Pane prefHeight="36.0" prefWidth="36.0" styleClass="add-remove-button" stylesheets="@../../../../css/pos-css.css">
+                                                <Pane onMouseClicked="#onDecreaseQuantity" prefHeight="36.0" prefWidth="36.0" styleClass="add-remove-button" stylesheets="@../../../../css/pos-css.css">
                                                    <children>
                                                       <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -144,7 +144,7 @@
                                                       </ImageView>
                                                    </children>
                                                 </Pane>
-                                                <Label prefHeight="36.0" prefWidth="26.0" text=" 10" textAlignment="CENTER">
+                                                <Label fx:id="quantityCountLabel" prefHeight="36.0" prefWidth="26.0" text=" 10" textAlignment="CENTER">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font>
@@ -152,7 +152,7 @@
                                                       <Insets left="10.0" right="10.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Pane prefHeight="36.0" prefWidth="36.0" styleClass="add-remove-button" stylesheets="@../../../../css/pos-css.css">
+                                                <Pane onMouseClicked="#onIncreaseQuantity" prefHeight="36.0" prefWidth="36.0" styleClass="add-remove-button" stylesheets="@../../../../css/pos-css.css">
                                                    <children>
                                                       <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -162,7 +162,7 @@
                                                    </children>
                                                 </Pane>
                                              </children></HBox>
-                                          <Label text="12 Available">
+                                          <Label fx:id="availableLabel" text="12 Available">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
@@ -174,7 +174,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="541.0" styleClass="button-proceed-payment-Black" stylesheets="@../../../../css/figma-elements.css" text="Proceed Payment" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#onAddToCart" prefHeight="35.0" prefWidth="541.0" styleClass="button-proceed-payment-Black" stylesheets="@../../../../css/figma-elements.css" text="Add to Cart" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -190,115 +190,119 @@
             </Pane>
          </children>
       </VBox>
-      <Pane prefHeight="831.0" prefWidth="520.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css">
+      <HBox prefHeight="871.0" prefWidth="539.0">
          <children>
-            <VBox prefHeight="831.0" prefWidth="520.0">
+            <Pane prefHeight="851.0" prefWidth="218.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="28.0" prefWidth="520.0">
+                  <VBox prefHeight="831.0" prefWidth="520.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Sale">
+                        <HBox prefHeight="28.0" prefWidth="520.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Sale">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Text fx:id="loyalCustomerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Mr. Gunarathne">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" right="25.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Line endX="413.30023193359375" endY="-5.384773254394531" startX="-104.24264526367188" startY="-5.384774208068848">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Line>
+                        <VBox prefHeight="537.0" prefWidth="433.0" VBox.vgrow="ALWAYS" />
+                        <Line endX="373.2573547363281" endY="-6.798986434936523" startX="-104.24264526367188" startY="-6.798986434936523">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                        </Line>
+                        <HBox prefHeight="24.0" prefWidth="500.0">
+                           <children>
+                              <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Text fx:id="subtotalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="30.0" right="30.0" top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="24.0" prefWidth="500.0">
+                           <children>
+                              <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Text fx:id="discountLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="-$100" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="30.0" right="30.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Line endX="372.7573547363281" endY="-6.798986434936523" startX="-104.24264526367188" startY="-6.798986434936523">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Line>
+                        <HBox prefHeight="24.0" prefWidth="500.0">
+                           <children>
+                              <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Total">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="30.0" right="30.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#onProceedPayment" prefHeight="35.0" prefWidth="541.0" styleClass="button-proceed-payment-Black" stylesheets="@../../../../css/figma-elements.css" text="Proceed Payment" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="15.0" />
                            </font>
-                        </Text>
-                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mr. Gunarathne">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
-                        </Text>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
-                     <VBox.margin>
-                        <Insets left="20.0" right="25.0" top="30.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Line endX="413.30023193359375" endY="-5.384773254394531" startX="-104.24264526367188" startY="-5.384774208068848">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Line>
-                  <VBox prefHeight="537.0" prefWidth="433.0" VBox.vgrow="ALWAYS" />
-                  <Line endX="373.2573547363281" endY="-6.798986434936523" startX="-104.24264526367188" startY="-6.798986434936523">
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </VBox.margin>
-                  </Line>
-                  <HBox prefHeight="24.0" prefWidth="500.0">
-                     <children>
-                        <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="30.0" right="30.0" top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="24.0" prefWidth="500.0">
-                     <children>
-                        <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-$100" textAlignment="RIGHT">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="30.0" right="30.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Line endX="372.7573547363281" endY="-6.798986434936523" startX="-104.24264526367188" startY="-6.798986434936523">
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <HBox prefHeight="24.0" prefWidth="500.0">
-                     <children>
-                        <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Total">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="30.0" right="30.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="541.0" styleClass="button-proceed-payment-Black" stylesheets="@../../../../css/figma-elements.css" text="Proceed Payment" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
+                  </VBox>
                </children>
-            </VBox>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Pane>
          </children>
-         <HBox.margin>
-            <Insets bottom="10.0" left="5.0" right="15.0" top="10.0" />
-         </HBox.margin>
-      </Pane>
+      </HBox>
     </children>
 </HBox>

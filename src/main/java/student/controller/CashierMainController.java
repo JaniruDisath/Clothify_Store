@@ -1,4 +1,4 @@
-package controller;
+package student.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
