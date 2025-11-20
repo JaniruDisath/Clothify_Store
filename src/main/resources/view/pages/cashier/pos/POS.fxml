@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.controller.POSController.PosController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.controller.POSController.PosControllerImpl">
     <children>
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <children>
@@ -36,7 +36,7 @@
                            <children>
                               <Pane fx:id="itemIcon" prefHeight="112.0" prefWidth="112.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css">
                                  <children>
-                                    <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="32.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="imageIcon" fitHeight="48.0" fitWidth="48.0" layoutX="32.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="10.0" />
@@ -194,7 +194,7 @@
          <children>
             <Pane prefHeight="851.0" prefWidth="218.0" styleClass="border-cart-boarder-corner" stylesheets="@../../../../css/pos-css.css" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="831.0" prefWidth="520.0">
+                  <VBox prefHeight="980.0" prefWidth="520.0">
                      <children>
                         <HBox prefHeight="28.0" prefWidth="520.0">
                            <children>
@@ -222,7 +222,11 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Line>
-                        <VBox prefHeight="537.0" prefWidth="433.0" VBox.vgrow="ALWAYS" />
+                        <VBox fx:id="cartVBox" alignment="TOP_CENTER" prefHeight="537.0" prefWidth="433.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
                         <Line endX="373.2573547363281" endY="-6.798986434936523" startX="-104.24264526367188" startY="-6.798986434936523">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" />
@@ -277,7 +281,7 @@
                                  </font>
                               </Text>
                               <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
+                              <Text fx:id="finalTotalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000" textAlignment="RIGHT">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

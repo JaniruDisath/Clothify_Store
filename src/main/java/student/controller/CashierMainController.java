@@ -1,5 +1,6 @@
 package student.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import lombok.Getter;
+import student.controller.POSController.PosControllerImpl;
+import student.model.dto.LoyaltyCustomer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +34,10 @@ public class CashierMainController implements Initializable {
 
     @FXML
     private HBox orderElement;
+
+    @FXML
+    private HBox exitProgramElement;
+
 
     // --- FXML Event Handlers ---
     @FXML
@@ -58,10 +65,27 @@ public class CashierMainController implements Initializable {
         }
     }
 
+    public void loadPOSUI(LoyaltyCustomer loyaltyCustomer) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/cashier/pos/POS.fxml"));
+        Parent root = loader.load();
+
+        PosControllerImpl controller = loader.getController();
+        controller.setLoyaltyCustomer(loyaltyCustomer);
+
+        contentArea.getChildren().setAll(root);
+    }
+
+
     // --- Initialize and set singleton instance ---
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instance = this; // store reference when controller is created
         loadUI("/view/pages/cashier/pos/LoyaltyCustomer.fxml");
+    }
+
+
+    @FXML
+    void onExitProgramElement(MouseEvent event) {
+        Platform.exit();
     }
 }

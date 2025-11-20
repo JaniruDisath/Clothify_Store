@@ -1,32 +1,34 @@
-package repository.loyaltyCustomerTable;
+package repository.itemsTable;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import student.model.entity.LoyaltyCustomerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import repository.ClothifyDatabase;
+import student.model.entity.ItemEntity;
+import student.model.entity.LoyaltyCustomerEntity;
 
 import java.util.List;
 
-public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEntity> {
+public class ItemTable implements ClothifyDatabase<ItemEntity> {
 
     private static final SessionFactory sessionFactory =
             new Configuration()
-                    .addAnnotatedClass(LoyaltyCustomerEntity.class)
+                    .addAnnotatedClass(ItemEntity.class)
                     .configure("hibernate.cfg.xml")
                     .buildSessionFactory();
 
     @Override
-    public List<LoyaltyCustomerEntity> getAllData() {
+    public List<ItemEntity> getAllData() {
         Session session = sessionFactory.openSession();
+
         try {
             CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<LoyaltyCustomerEntity> cq = cb.createQuery(LoyaltyCustomerEntity.class);
-            cq.from(LoyaltyCustomerEntity.class);
+            CriteriaQuery<ItemEntity> cq = cb.createQuery(ItemEntity.class);
+            cq.from(ItemEntity.class);
             return session.createQuery(cq).getResultList();
         } finally {
             session.close();
@@ -34,7 +36,7 @@ public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEnt
     }
 
     @Override
-    public void insertAnItem(LoyaltyCustomerEntity entity) {
+    public void insertAnItem(ItemEntity entity) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
 
@@ -51,28 +53,36 @@ public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEnt
     }
 
     @Override
-    public LoyaltyCustomerEntity getAnItem(String id) {
+    public ItemEntity getAnItem(String id) {
         Session session = sessionFactory.openSession();
+
         try {
-            return session.find(LoyaltyCustomerEntity.class, id);
+            return session.find(ItemEntity.class, id);
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void updateAnItem(LoyaltyCustomerEntity updated) {
+    public void updateAnItem(ItemEntity updated) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
 
-            LoyaltyCustomerEntity existing =
-                    session.find(LoyaltyCustomerEntity.class, updated.getPhone());
+            ItemEntity existing = session.find(ItemEntity.class, updated.getItemCode());
             if (existing != null) {
                 existing.setName(updated.getName());
-                existing.setEmail(updated.getEmail());
+                existing.setBrand(updated.getBrand());
+                existing.setCategory(updated.getCategory());
+                existing.setColor(updated.getColor());
+                existing.setSize(updated.getSize());
+                existing.setQuantity(updated.getQuantity());
+                existing.setUnitPrice(updated.getUnitPrice());
+                existing.setDiscount(updated.getDiscount());
+                existing.setImagePath(updated.getImagePath());
+
                 session.merge(existing);
             }
 
@@ -92,13 +102,9 @@ public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEnt
 
         try {
             tx = session.beginTransaction();
-
-            LoyaltyCustomerEntity entity =
-                    session.find(LoyaltyCustomerEntity.class, id);
-
+            ItemEntity entity = session.find(ItemEntity.class, id);
             if (entity != null)
                 session.remove(entity);
-
             tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();
@@ -108,4 +114,3 @@ public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEnt
         }
     }
 }
-

@@ -17,8 +17,7 @@ import lombok.*;
 
 public class LoyaltyCustomerEntity {
     @Id
-    private String id;
-    private String name;
     private String phone;
+    private String name;
     private String email;
 }

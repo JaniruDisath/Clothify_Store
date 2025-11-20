@@ -1,10 +1,10 @@
-package student.controller.POSController.Elements;
+package student.controller.POSController.Elements.item;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class CartItemForm {
+public class ReturnCartItemForm {
 
     @FXML
     private Label colorLabel;
@@ -27,12 +27,7 @@ public class CartItemForm {
     }
 
     @FXML
-    void onIncreaseQuantity(MouseEvent event) {
-
-    }
-
-    @FXML
-    void onRemoveCartItem(MouseEvent event) {
+    void onProcessReturnItem(MouseEvent event) {
 
     }
 

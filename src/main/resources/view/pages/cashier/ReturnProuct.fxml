@@ -127,7 +127,7 @@
                         <Line endX="600.0" endY="-33.0" startX="-350.0" startY="-33.0" />
                         <VBox prefHeight="77.0" prefWidth="951.0">
                            <children>
-                              <CheckBox mnemonicParsing="false" text="Is Item Damaged">
+                              <CheckBox fx:id="cb_time_period" mnemonicParsing="false" text="Is the item within the return time period?">
                                  <VBox.margin>
                                     <Insets left="40.0" top="10.0" />
                                  </VBox.margin>
@@ -135,7 +135,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Is Item Damaged">
+                              <CheckBox fx:id="cb_not_giveaway" mnemonicParsing="false" text="Was this item purchased (not a free giveaway)?">
                                  <VBox.margin>
                                     <Insets left="40.0" top="10.0" />
                                  </VBox.margin>
@@ -143,7 +143,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Is Item Damaged">
+                              <CheckBox fx:id="cb_amount" mnemonicParsing="false" text="Is the purchased amount eligible for refund?">
                                  <VBox.margin>
                                     <Insets left="40.0" top="10.0" />
                                  </VBox.margin>
@@ -151,13 +151,21 @@
                                     <Font size="14.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox mnemonicParsing="false" text="Is Item Damaged">
+                              <CheckBox fx:id="cb_correc_item" mnemonicParsing="false" text="Is this the correct item for this invoice?">
+                                 <VBox.margin>
+                                    <Insets left="40.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="cb_correc_item1" mnemonicParsing="false" text="Is the item damaged?">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="40.0" top="10.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                               </CheckBox>
                            </children>
                            <VBox.margin>
