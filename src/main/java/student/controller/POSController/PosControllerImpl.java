@@ -11,11 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.controlsfx.control.SearchableComboBox;
-import student.model.dto.CartItem;
+import student.model.dto.onlyDto.CartItem;
 import student.model.dto.Item;
 import student.model.dto.LoyaltyCustomer;
 import student.services.item.ItemService;
 import student.services.item.ItemServiceImpl;
+import student.services.newWindow.WindowLoader;
 import student.singleton.CartManager;
 
 import java.net.URL;
@@ -221,7 +222,7 @@ public class PosControllerImpl implements PosController, Initializable {
 
     @FXML
     void onProceedPayment(ActionEvent event) {
-
+        WindowLoader.show("/view/pages/cashier/pos/paymentGate/CashGate.fxml");
     }
 
     @Override

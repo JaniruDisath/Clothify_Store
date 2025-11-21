@@ -1,8 +1,9 @@
-package student.model.dto;
+package student.model.dto.onlyDto;
 
 import javafx.scene.layout.HBox;
 import lombok.*;
 import student.controller.POSController.Elements.item.cartItem.CartItemController;
+import student.model.dto.Item;
 
 @Getter
 @Setter

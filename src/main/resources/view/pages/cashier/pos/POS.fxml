@@ -47,7 +47,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Label fx:id="brandNameLabel" prefHeight="22.0" prefWidth="111.0" text="         Brand Name" textAlignment="CENTER" wrapText="true">
+                                    <Label fx:id="brandNameLabel" alignment="CENTER" prefHeight="22.0" prefWidth="111.0" text="Brand Name" textAlignment="CENTER" wrapText="true">
                                        <font>
                                           <Font size="10.0" />
                                        </font>

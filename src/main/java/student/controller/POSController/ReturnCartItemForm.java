@@ -1,4 +1,4 @@
-package student.controller.POSController.Elements.item;
+package student.controller.POSController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

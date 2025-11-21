@@ -2,17 +2,15 @@ package student.singleton;
 
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import student.controller.POSController.Elements.item.cartItem.CartItemController;
 import student.controller.POSController.PosControllerImpl;
-import student.model.dto.CartItem;
+import student.model.dto.onlyDto.CartItem;
 import student.model.dto.Item;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class CartManager {
 
@@ -104,4 +102,7 @@ public class CartManager {
         return discount;
     }
 
+    public void resetCart(){
+        instance = null;
+    }
 }

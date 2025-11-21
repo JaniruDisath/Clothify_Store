@@ -1,7 +1,6 @@
 package student.controller.POSController.Elements.item.cartItem;
 
-import javafx.scene.layout.HBox;
-import student.model.dto.CartItem;
+import student.model.dto.onlyDto.CartItem;
 
 public interface CartItemController {
     void setValues(CartItem cartItem);

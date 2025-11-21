@@ -18,4 +18,7 @@ public interface ClothifyDatabase<T> {
 
     //Delete An Item
     void deleteAnItem(String primaryID);
+
+    //Get The last Added Record
+    T getLastAddedItem();
 }

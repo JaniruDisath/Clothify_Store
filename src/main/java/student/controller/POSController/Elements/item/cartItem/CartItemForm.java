@@ -1,12 +1,9 @@
 package student.controller.POSController.Elements.item.cartItem;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import student.model.dto.CartItem;
+import student.model.dto.onlyDto.CartItem;
 import student.model.dto.Item;
 import student.singleton.CartManager;
 

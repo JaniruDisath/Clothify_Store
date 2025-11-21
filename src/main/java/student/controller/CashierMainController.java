@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import lombok.Getter;
 import student.controller.POSController.PosControllerImpl;
 import student.model.dto.LoyaltyCustomer;
@@ -88,4 +89,20 @@ public class CashierMainController implements Initializable {
     void onExitProgramElement(MouseEvent event) {
         Platform.exit();
     }
+
+    public StackPane getContentArea() {
+        return contentArea;
+    }
+
+
+    private static Stage stage;
+
+    public static void setStage(Stage s) {
+        stage = s;
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
 }
