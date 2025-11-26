@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 
-public class Transaction {
+public class PaymentTransactionDTO {
     private String transactionId;
     private String orderId;
     private LocalDateTime time;

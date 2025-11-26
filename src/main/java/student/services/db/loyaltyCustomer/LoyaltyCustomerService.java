@@ -1,4 +1,4 @@
-package student.services.loyaltyCustomer;
+package student.services.db.loyaltyCustomer;
 
 import student.model.dto.LoyaltyCustomer;
 

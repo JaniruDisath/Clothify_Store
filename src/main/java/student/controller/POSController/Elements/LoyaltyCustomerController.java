@@ -7,11 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import student.model.dto.LoyaltyCustomer;
-import student.services.loyaltyCustomer.LoyaltyCustomerService;
-import student.services.loyaltyCustomer.LoyaltyCustomerServiceImpl;
+import student.services.db.loyaltyCustomer.LoyaltyCustomerService;
+import student.services.db.loyaltyCustomer.LoyaltyCustomerServiceImpl;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

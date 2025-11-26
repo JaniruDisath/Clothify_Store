@@ -1,15 +1,15 @@
 package student.mappers;
 
 
-import student.model.dto.transaction.Transaction;
-import student.model.entity.transaction.TransactionEntity;
+import student.model.dto.transaction.PaymentTransactionDTO;
+import student.model.entity.transaction.PaymentTransactionEntity;
 
 public class TransactionMapper {
 
-    public static Transaction toModel(TransactionEntity entity) {
+    public static PaymentTransactionDTO toModel(PaymentTransactionEntity entity) {
         if (entity == null) return null;
 
-        return new Transaction(
+        return new PaymentTransactionDTO(
                 entity.getTransactionId(),
                 entity.getOrder().getOrderId(),
                 entity.getTransactionTime(),
@@ -18,10 +18,10 @@ public class TransactionMapper {
         );
     }
 
-    public static TransactionEntity toEntity(Transaction model) {
+    public static PaymentTransactionEntity toEntity(PaymentTransactionDTO model) {
         if (model == null) return null;
 
-        TransactionEntity entity = new TransactionEntity();
+        PaymentTransactionEntity entity = new PaymentTransactionEntity();
 
         entity.setTransactionId(model.getTransactionId());
         entity.setTransactionTime(model.getTime());

@@ -29,11 +29,13 @@ public class CartItemForm implements CartItemController {
 
     @FXML
     void onDecreaseQuantity(MouseEvent event) {
+        if (quantity==1) return;
         updateQuantityInfo(--quantity);
     }
 
     @FXML
     void onIncreaseQuantity(MouseEvent event) {
+        if (item.getQty()==quantity) return;
         updateQuantityInfo(++quantity);
     }
 

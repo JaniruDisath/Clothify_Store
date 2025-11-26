@@ -14,98 +14,48 @@ import java.util.List;
 
 public class LoyaltyCustomerTable implements ClothifyDatabase<LoyaltyCustomerEntity> {
 
-    private static final SessionFactory sessionFactory =
-            new Configuration()
-                    .addAnnotatedClass(LoyaltyCustomerEntity.class)
-                    .configure("hibernate.cfg.xml")
-                    .buildSessionFactory();
+    @Override
+    public List<LoyaltyCustomerEntity> getAllData(Session session) {
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<LoyaltyCustomerEntity> cq = cb.createQuery(LoyaltyCustomerEntity.class);
+        cq.from(LoyaltyCustomerEntity.class);
+        return session.createQuery(cq).getResultList();
+    }
 
     @Override
-    public List<LoyaltyCustomerEntity> getAllData() {
-        Session session = sessionFactory.openSession();
-        try {
-            CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<LoyaltyCustomerEntity> cq = cb.createQuery(LoyaltyCustomerEntity.class);
-            cq.from(LoyaltyCustomerEntity.class);
-            return session.createQuery(cq).getResultList();
-        } finally {
-            session.close();
+    public void insertAnItem(Session session, LoyaltyCustomerEntity entity) {
+        session.persist(entity);
+    }
+
+    @Override
+    public LoyaltyCustomerEntity getAnItem(Session session, String id) {
+
+        return session.find(LoyaltyCustomerEntity.class, id);
+
+    }
+
+    @Override
+    public void updateAnItem(Session session, LoyaltyCustomerEntity updated) {
+        LoyaltyCustomerEntity existing =
+                session.find(LoyaltyCustomerEntity.class, updated.getPhone());
+        if (existing != null) {
+            existing.setName(updated.getName());
+            existing.setEmail(updated.getEmail());
+            session.merge(existing);
         }
     }
 
     @Override
-    public void insertAnItem(LoyaltyCustomerEntity entity) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-            session.persist(entity);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+    public void deleteAnItem(Session session, String id) {
+        LoyaltyCustomerEntity entity =
+                session.find(LoyaltyCustomerEntity.class, id);
+        if (entity != null)
+            session.remove(entity);
     }
 
     @Override
-    public LoyaltyCustomerEntity getAnItem(String id) {
-        Session session = sessionFactory.openSession();
-        try {
-            return session.find(LoyaltyCustomerEntity.class, id);
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public void updateAnItem(LoyaltyCustomerEntity updated) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-
-            LoyaltyCustomerEntity existing =
-                    session.find(LoyaltyCustomerEntity.class, updated.getPhone());
-            if (existing != null) {
-                existing.setName(updated.getName());
-                existing.setEmail(updated.getEmail());
-                session.merge(existing);
-            }
-
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public void deleteAnItem(String id) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-
-            LoyaltyCustomerEntity entity =
-                    session.find(LoyaltyCustomerEntity.class, id);
-
-            if (entity != null)
-                session.remove(entity);
-
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+    public LoyaltyCustomerEntity getLastAddedItem(Session session) {
+        return null;
     }
 }
 

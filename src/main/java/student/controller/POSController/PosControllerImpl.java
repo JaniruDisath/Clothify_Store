@@ -14,8 +14,8 @@ import org.controlsfx.control.SearchableComboBox;
 import student.model.dto.onlyDto.CartItem;
 import student.model.dto.Item;
 import student.model.dto.LoyaltyCustomer;
-import student.services.item.ItemService;
-import student.services.item.ItemServiceImpl;
+import student.services.db.item.ItemService;
+import student.services.db.item.ItemServiceImpl;
 import student.services.newWindow.WindowLoader;
 import student.singleton.CartManager;
 
@@ -33,7 +33,13 @@ public class PosControllerImpl implements PosController, Initializable {
         return instance;
     }
 
+
+
     private LoyaltyCustomer loyaltyCustomer;
+
+    public LoyaltyCustomer getLoyaltyCustomer() {
+        return loyaltyCustomer;
+    }
 
     @FXML
     private Text loyalCustomerName;
@@ -205,7 +211,7 @@ public class PosControllerImpl implements PosController, Initializable {
 
     private void updateCalculations() {
         Double subTotalTemp = CartManager.getInstance().getTotal();
-        Double discountTemp = CartManager.getInstance().getDiscount();
+        Double discountTemp = CartManager.getInstance().getTotalDiscount();
         subtotalLabel.setText(String.valueOf(subTotalTemp));
         discountLabel.setText(String.valueOf(discountTemp));
         finalTotalLabel.setText(String.valueOf(subTotalTemp-discountTemp));
@@ -222,6 +228,7 @@ public class PosControllerImpl implements PosController, Initializable {
 
     @FXML
     void onProceedPayment(ActionEvent event) {
+        if (CartManager.getInstance().isCartEmpty()) return;
         WindowLoader.show("/view/pages/cashier/pos/paymentGate/CashGate.fxml");
     }
 

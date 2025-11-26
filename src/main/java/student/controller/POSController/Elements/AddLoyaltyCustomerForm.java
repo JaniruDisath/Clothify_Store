@@ -6,8 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import student.model.dto.LoyaltyCustomer;
-import student.services.loyaltyCustomer.LoyaltyCustomerService;
-import student.services.loyaltyCustomer.LoyaltyCustomerServiceImpl;
+import student.services.db.loyaltyCustomer.LoyaltyCustomerService;
+import student.services.db.loyaltyCustomer.LoyaltyCustomerServiceImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,21 +46,17 @@ public class AddLoyaltyCustomerForm implements Initializable {
     void onEnter(ActionEvent event) throws IOException {
 
         if (!isNameValid || !isNumberValid || !isEmailValid) {
-            System.out.println("Invalid inputs");
             return;
         }
 
-        // Create DTO
         LoyaltyCustomer newCustomer = new LoyaltyCustomer(
                 tf_LoyaltyNumber.getText(),
                 tf_LoyaltyName.getText(),
                 tf_LoyaltyEmail.getText()
         );
 
-        // Add customer OR fetch existing
         LoyaltyCustomer result = service.addLoyaltyCustomer(newCustomer);
 
-        // Now load POS UI with the object
         CashierMainController.getInstance().loadPOSUI(result);
     }
 

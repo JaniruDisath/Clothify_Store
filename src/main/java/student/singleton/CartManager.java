@@ -7,6 +7,7 @@ import student.controller.POSController.Elements.item.cartItem.CartItemControlle
 import student.controller.POSController.PosControllerImpl;
 import student.model.dto.onlyDto.CartItem;
 import student.model.dto.Item;
+import student.model.dto.order.OrderItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,6 +67,25 @@ public class CartManager {
         return cartList;
     }
 
+    public Boolean isCartEmpty() {
+        return cartList.isEmpty();
+    }
+
+    public List<OrderItem> getOrderItemList(){
+        List<OrderItem> orderItemList = new ArrayList<>();
+        for (CartItem cartItem : cartList) {
+            orderItemList.add(new OrderItem(
+                    cartItem.getItem().getCode(),
+                    "",
+                    cartItem.getItem().getName(),
+                    cartItem.getQuantity(),
+                    cartItem.getItem().getPrice(),
+                    cartItem.getItem().getPrice()/100*cartItem.getItem().getDiscount()
+            ));
+        }
+        return orderItemList;
+    }
+
     public void updateCartItemQuantity(Item item,Integer newQuantity) {
         for (CartItem cartItem : cartList) {
             if (cartItem.getItem().getCode().equals(item.getCode())) {
@@ -92,7 +112,7 @@ public class CartManager {
         return total;
     }
 
-    public Double getDiscount(){
+    public Double getTotalDiscount(){
         Double discount = 0.0;
         for (CartItem cartItem : cartList) {
             if(cartItem.getItem().getDiscount()==0) continue;

@@ -18,7 +18,7 @@ public class CashTransactionEntity {
 
     @OneToOne
     @JoinColumn(name = "transaction_id")
-    private TransactionEntity transaction;
+    private PaymentTransactionEntity transaction;
 
     private double amountGiven;
 

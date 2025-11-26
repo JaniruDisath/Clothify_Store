@@ -9,13 +9,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import student.controller.CashierMainController;
+import student.model.dto.transaction.CardTransaction;
+import student.model.dto.transaction.CashTransaction;
 import student.services.newWindow.WindowLoader;
+import student.services.orderTransaction.OrderTransactionService;
+import student.services.orderTransaction.OrderTransactionServiceImpl;
 import student.singleton.CartManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CashGate implements Initializable {
+
+    private OrderTransactionService service = new OrderTransactionServiceImpl();
 
     @FXML
     private Label numberOfFiftiesLabel;
@@ -54,6 +60,8 @@ public class CashGate implements Initializable {
     private TextField tf_AmountCustomerGave;
 
     private Integer total;
+    private Integer change;
+    private Integer givenAmount =0;
 
     @FXML
     private Text totalLabel;
@@ -71,9 +79,11 @@ public class CashGate implements Initializable {
 
     @FXML
     void onCompleteCheckout(ActionEvent event) {
+        if (givenAmount == 0) return;
         exit(event);
         CashierMainController.getInstance().loadUI("/view/pages/cashier/pos/LoyaltyCustomer.fxml");
-        CartManager.getInstance().resetCart();
+        service.addOrder(new CashTransaction("", givenAmount,change), null);
+
     }
 
     private void exit(ActionEvent event) {
@@ -84,7 +94,8 @@ public class CashGate implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupAmountValidation();
-        total = (int)(CartManager.getInstance().getTotal()-CartManager.getInstance().getDiscount());
+        total = (int)(CartManager.getInstance().getTotal()-CartManager.getInstance().getTotalDiscount());
+        totalLabel.setText(String.valueOf(total));
     }
 
 
@@ -117,7 +128,8 @@ public class CashGate implements Initializable {
 
             int change = customerAmount - total;
             returnChangeLabel.setText("Rs. " + change);
-
+            this.change = change;
+            this.givenAmount = customerAmount;
             updateDenominations(change);
 
         } catch (Exception e) {

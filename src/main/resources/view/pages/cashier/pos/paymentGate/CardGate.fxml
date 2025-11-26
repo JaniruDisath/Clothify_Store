@@ -45,7 +45,7 @@
                                     </HBox.margin>
                                 </Label>
                                 <Pane prefHeight="70.0" prefWidth="228.0" HBox.hgrow="ALWAYS" />
-                                <Button mnemonicParsing="false" onAction="#onCardCliked" prefHeight="35.0" prefWidth="270.0" styleClass="button-checkout-white" stylesheets="@../../../../../css/figma-elements.css" text="Card">
+                                <Button mnemonicParsing="false" onAction="#onCardCliked" prefHeight="35.0" prefWidth="270.0" styleClass="button-checkout-white" stylesheets="@../../../../../css/figma-elements.css" text="Cash">
                                     <HBox.margin>
                                         <Insets left="20.0" right="30.0" />
                                     </HBox.margin>

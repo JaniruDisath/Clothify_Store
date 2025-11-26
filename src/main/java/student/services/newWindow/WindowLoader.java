@@ -1,6 +1,5 @@
 package student.services.newWindow;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,28 +13,34 @@ public class WindowLoader {
 
     private static final BoxBlur blurEffect = new BoxBlur(10, 10, 3);
 
+    // 🌟 Reference counter (how many popups are open)
+    private static int popupCount = 0;
+
     public static void show(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(WindowLoader.class.getResource(fxmlPath));
             Parent root = loader.load();
-
-            // Apply blur
-            CashierMainController.getInstance().getContentArea().setEffect(blurEffect);
 
             Stage popup = new Stage();
             popup.setScene(new Scene(root));
 
             popup.initStyle(StageStyle.UNDECORATED);
             popup.initModality(Modality.WINDOW_MODAL);
-
-            // 🔥 THE FIX — Set owner
             popup.initOwner(CashierMainController.getStage());
-
             popup.setAlwaysOnTop(true);
             popup.setResizable(false);
 
-            popup.setOnCloseRequest(e -> CashierMainController.getInstance().getContentArea().setEffect(null));
-            popup.setOnHidden(e -> CashierMainController.getInstance().getContentArea().setEffect(null));
+            // 🔥 INCREASE POPUP COUNT AND APPLY BLUR
+            popupCount++;
+            applyBlur();
+
+            // When popup closes
+            popup.setOnHidden(e -> {
+                popupCount--;
+                if (popupCount <= 0) {
+                    removeBlur();
+                }
+            });
 
             popup.show();
 
@@ -44,4 +49,16 @@ public class WindowLoader {
         }
     }
 
+    private static void applyBlur() {
+        CashierMainController.getInstance()
+                .getContentArea()
+                .setEffect(blurEffect);
+    }
+
+    private static void removeBlur() {
+        CashierMainController.getInstance()
+                .getContentArea()
+                .setEffect(null);
+        popupCount = 0;
+    }
 }

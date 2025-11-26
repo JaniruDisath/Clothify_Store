@@ -1,8 +1,10 @@
-package student.services.order;
+package student.services.db.order;
 
+import org.hibernate.Session;
 import repository.ClothifyDatabase;
 import repository.order.orderTable.OrderTable;
 import student.model.entity.order.OrderEntity;
+import student.util.HibernateUtil;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,11 +12,12 @@ import java.time.format.DateTimeFormatter;
 public class OrderServiceImpl implements OrderService {
 
     ClothifyDatabase<OrderEntity> service = new OrderTable();
+    private final Session session = HibernateUtil.getSessionFactory().openSession();
 
     @Override
     public String generateOrderId() {
 
-        OrderEntity lastOrder = service.getLastAddedItem();
+        OrderEntity lastOrder = service.getLastAddedItem(session);
 
         if (lastOrder == null) {
             String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyMMdd"));
@@ -32,7 +35,6 @@ public class OrderServiceImpl implements OrderService {
 
         return String.format("ORD-%s-%04d", today, newCounter);
     }
-
 
 
 }

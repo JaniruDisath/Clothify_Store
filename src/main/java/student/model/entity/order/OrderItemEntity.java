@@ -32,6 +32,6 @@ public class OrderItemEntity {
 
     private double discountPerUnit;
 
-    private double lineTotal;
+    private String orderId;
 
 }

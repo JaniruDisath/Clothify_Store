@@ -13,60 +13,27 @@ import java.util.List;
 
 public class OrderTable implements ClothifyDatabase<OrderEntity> {
 
-    private static final SessionFactory sessionFactory =
-            new Configuration()
-                    .addAnnotatedClass(OrderEntity.class)
-                    .configure("hibernate.cfg.xml")
-                    .buildSessionFactory();
-
     @Override
-    public List<OrderEntity> getAllData() {
-        Session session = sessionFactory.openSession();
-        try {
+    public List<OrderEntity> getAllData(Session session) {
+
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<OrderEntity> cq = cb.createQuery(OrderEntity.class);
             cq.from(OrderEntity.class);
             return session.createQuery(cq).getResultList();
-        } finally {
-            session.close();
-        }
     }
 
     @Override
-    public void insertAnItem(OrderEntity entity) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
+    public void insertAnItem(Session session,OrderEntity entity) {
             session.persist(entity);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
     }
 
     @Override
-    public OrderEntity getAnItem(String id) {
-        Session session = sessionFactory.openSession();
-        try {
+    public OrderEntity getAnItem(Session session,String id) {
             return session.find(OrderEntity.class, id);
-        } finally {
-            session.close();
-        }
     }
 
     @Override
-    public void updateAnItem(OrderEntity updated) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
-
+    public void updateAnItem(Session session,OrderEntity updated) {
             OrderEntity existing = session.find(OrderEntity.class, updated.getOrderId());
             if (existing != null) {
                 existing.setOrderTime(updated.getOrderTime());
@@ -78,40 +45,17 @@ public class OrderTable implements ClothifyDatabase<OrderEntity> {
                 existing.setPaymentType(updated.getPaymentType());
                 session.merge(existing);
             }
-
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
     }
 
     @Override
-    public void deleteAnItem(String id) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            tx = session.beginTransaction();
+    public void deleteAnItem(Session session,String id) {
             OrderEntity entity = session.find(OrderEntity.class, id);
             if (entity != null)
                 session.remove(entity);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
     }
 
     @Override
-    public OrderEntity getLastAddedItem() {
-        Session session = sessionFactory.openSession();
-
-        try {
+    public OrderEntity getLastAddedItem(Session session) {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<OrderEntity> cq = cb.createQuery(OrderEntity.class);
             Root<OrderEntity> root = cq.from(OrderEntity.class);
@@ -122,10 +66,6 @@ public class OrderTable implements ClothifyDatabase<OrderEntity> {
             return session.createQuery(cq)
                     .setMaxResults(1)
                     .uniqueResult();
-
-        } finally {
-            session.close();
-        }
     }
 
 

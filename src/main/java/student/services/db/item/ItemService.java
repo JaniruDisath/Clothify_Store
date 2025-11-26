@@ -1,4 +1,4 @@
-package student.services.item;
+package student.services.db.item;
 
 import student.model.dto.Item;
 

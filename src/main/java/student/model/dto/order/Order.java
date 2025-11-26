@@ -1,8 +1,6 @@
 package student.model.dto.order;
 
 import lombok.*;
-import student.model.dto.LoyaltyCustomer;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

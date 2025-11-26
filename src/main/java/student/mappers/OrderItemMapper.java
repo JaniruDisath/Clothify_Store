@@ -14,11 +14,11 @@ public class OrderItemMapper {
 
         return new OrderItem(
                 entity.getItemCode(),
+                entity.getOrderId(),
                 entity.getName(),
                 entity.getQuantity(),
                 entity.getUnitPrice(),
-                entity.getDiscountPerUnit(),
-                entity.getLineTotal()
+                entity.getDiscountPerUnit()
         );
     }
 
@@ -31,8 +31,6 @@ public class OrderItemMapper {
         entity.setQuantity(model.getQuantity());
         entity.setUnitPrice(model.getUnitPrice());
         entity.setDiscountPerUnit(model.getDiscountPerUnit());
-        entity.setLineTotal(model.getLineTotal());
-
         return entity;
     }
 

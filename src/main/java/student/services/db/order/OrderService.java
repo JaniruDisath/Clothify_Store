@@ -1,4 +1,4 @@
-package student.services.order;
+package student.services.db.order;
 
 public interface OrderService {
     String generateOrderId();

@@ -1,35 +1,45 @@
-package student.services.loyaltyCustomer;
+package student.services.db.loyaltyCustomer;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import repository.ClothifyDatabase;
 import repository.loyaltyCustomerTable.LoyaltyCustomerTable;
 import student.model.dto.LoyaltyCustomer;
 import student.model.entity.LoyaltyCustomerEntity;
+import student.util.HibernateUtil;
 
 public class LoyaltyCustomerServiceImpl implements LoyaltyCustomerService {
 
     private final ClothifyDatabase<LoyaltyCustomerEntity> database = new LoyaltyCustomerTable();
+    private Session session = HibernateUtil.getSessionFactory().openSession();
 
     @Override
     public LoyaltyCustomer getLoyaltyCustomer(String id) {
-        LoyaltyCustomerEntity entity = database.getAnItem(id);
+        LoyaltyCustomerEntity entity = database.getAnItem(session,id);
         return mapToModel(entity);
     }
 
 
     public boolean customerExists(String phone) {
-        return database.getAnItem(phone) != null;
+        return database.getAnItem(session,phone) != null;
     }
 
     @Override
     public LoyaltyCustomer addLoyaltyCustomer(LoyaltyCustomer model) {
-
-        // Already exists → return existing customer
+        Transaction tx = null;
         if (customerExists(model.getPhone())) {
             return getLoyaltyCustomer(model.getPhone());
         }
-
-        // Create new
-        database.insertAnItem(mapToEntity(model));
+        try {
+            tx = session.beginTransaction();
+            database.insertAnItem(session,mapToEntity(model));
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return model;
     }
 
